@@ -1,0 +1,466 @@
+<!-- Task 1:  -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Collapsible Sidebar</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+    }
+    .sidebar {
+      width: 250px;
+      height: 100vh;
+      background: #2c3e50;
+      color: #fff;
+      position: fixed;
+      left: 0;
+      top: 0;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+      padding: 1em;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+    }
+    .sidebar.open {
+      transform: translateX(0);
+    }
+    .sidebar .logo {
+      font-size: 1.5em;
+      font-weight: bold;
+      margin-bottom: 1em;
+    }
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+    .sidebar ul li {
+      margin: 1em 0;
+      padding: 0.5em;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .sidebar ul li:hover {
+      background: #34495e;
+    }
+    .toggle-btn {
+      position: absolute;
+      top: 1em;
+      left: 1em;
+      background: #2980b9;
+      color: white;
+      border: none;
+      padding: 0.5em 1em;
+      border-radius: 5px;
+      cursor: pointer;
+      z-index: 1000;
+    }
+  </style>
+</head>
+<body>
+  <div id="sidebar" class="sidebar">
+    <div class="logo">LOGO</div>
+    <ul>
+      <li> Home</li>
+      <li> About</li>
+      <li> Contact</li>
+      <li> Settings</li>
+    </ul>
+  </div>
+  <button class="toggle-btn" onclick="toggleSidebar()">☰ Menu</button>
+
+  <script>
+    function toggleSidebar() {
+      document.getElementById('sidebar').classList.toggle('open');
+    }
+  </script>
+</body>
+</html>
+
+<!-- Task 2: -->
+<style>
+  form {
+    max-width: 500px;
+    margin: 3em auto;
+    background: #fff;
+    padding: 2em;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+  form input, form textarea, form button {
+    width: 100%;
+    margin: 0.5em 0;
+    padding: 0.75em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  form button {
+    background: #27ae60;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  form button:hover {
+    background: #219150;
+  }
+
+  @media screen and (max-width: 600px) {
+    section, footer {
+      padding: 1em !important;
+    }
+    h1 {
+      font-size: 2em !important;
+    }
+    .feature-card, .post, form {
+      width: 100% !important;
+    }
+    section[style*="display: flex"] {
+      flex-direction: column !important;
+      align-items: center !important;
+    }
+    blockquote {
+      padding: 0 1em;
+    }
+    input, textarea, button {
+      font-size: 1em !important;
+    }
+    .sidebar {
+      width: 100% !important;
+      height: auto !important;
+      position: static !important;
+      transform: none !important;
+    }
+    .toggle-btn {
+      position: relative !important;
+      margin: 1em auto;
+      display: block;
+    }}
+</style>
+<form id="contactForm">
+  <input type="text" name="name" placeholder="Full Name" required>
+  <input type="email" name="email" placeholder="Email" required>
+  <input type="text" name="subject" placeholder="Subject">
+  <textarea name="message" placeholder="Message"></textarea>
+  <button type="submit">Send</button>
+</form>
+<script>
+  document.getElementById("contactForm").onsubmit = function (e) {
+    e.preventDefault();
+    const email = this.email.value;
+    if (!email.includes("@")) {
+      alert("Invalid email");
+      return;
+    }
+    alert("Form submitted!");
+  };
+</script>
+
+<!-- Task 3:  -->
+<style>
+ .feature-card {
+   background: white;
+   padding: 1.5em;
+   border-radius: 10px;
+   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+   transition: transform 0.4s ease, box-shadow 0.4s ease;
+ }
+ .feature-card:hover {
+   transform: translateY(-8px) scale(1.03);
+   box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+ }
+</style>
+
+<section style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #6dd5ed, #2193b0); color: white; padding: 3em; text-align: center;">
+ <h1 style="font-size: 3em; margin-bottom: 0.3em;">TaskFlow</h1>
+ <p style="font-size: 1.2em; margin-bottom: 1em;">Organize your tasks like a pro with ease and clarity.</p>
+ <button style="padding: 0.75em 1.5em; background: white; color: #2193b0; border: none; border-radius: 5px; font-weight: bold; cursor: pointer;">Get Started</button>
+</section>
+
+<section style="padding: 3em; background: #f9f9f9; display: flex; justify-content: center; flex-wrap: wrap; gap: 2em;">
+ <div class="feature-card" style="width: 250px;">
+   <img src="https://img.icons8.com/ios-filled/100/000000/task.png" alt="Tasks" style="width: 60px;">
+   <h3>Task Management</h3>
+   <p>Keep track of all your work in one place with visual cues.</p>
+ </div>
+ <div class="feature-card" style="width: 250px;">
+   <img src="https://img.icons8.com/ios-filled/100/000000/calendar.png" alt="Calendar" style="width: 60px;">
+   <h3>Calendar View</h3>
+   <p>Plan and schedule tasks with an intuitive calendar layout.</p>
+ </div>
+ <div class="feature-card" style="width: 250px;">
+   <img src="https://img.icons8.com/ios-filled/100/000000/teamwork.png" alt="Team" style="width: 60px;">
+   <h3>Team Collaboration</h3>
+   <p>Collaborate seamlessly with your team members in real-time.</p>
+ </div>
+</section>
+
+<section style="padding: 2em; background: #ffffff; text-align: center;">
+ <h2 style="margin-bottom: 1em;">What Users Say</h2>
+ <blockquote style="font-style: italic; max-width: 600px; margin: auto;">"TaskFlow has completely changed the way I work. I’m more organized and productive than ever before!"</blockquote>
+ <p>- RUMAIL RAZA, Product Manager</p>
+</section>
+
+<section style="padding: 2em; background: #ecf0f1; display: flex; justify-content: center; gap: 2em; text-align: center; flex-wrap: wrap;">
+ <div class="feature-card" style="width: 220px; background: white;">
+   <h3>Free</h3>
+   <p>$0 / month</p>
+   <p>Basic task tracking</p>
+ </div>
+ <div class="feature-card" style="width: 220px; background: white;">
+   <h3>Pro</h3>
+   <p>$9.99 / month</p>
+   <p>Advanced features and collaboration</p>
+ </div>
+ <div class="feature-card" style="width: 220px; background: white;">
+   <h3>Team</h3>
+   <p>$19.99 / month</p>
+   <p>All Pro features + team support</p>
+ </div>
+</section>
+
+<footer style="background: #34495e; color: white; text-align: center; padding: 2em;">
+ <p>Contact us: RUMAILRAZA@taskflow.com</p>
+ <div style="margin-top: 1em;">
+   <a href="#" style="color: white; margin: 0 1em;">Facebook</a>
+   <a href="#" style="color: white; margin: 0 1em;">Twitter</a>
+   <a href="#" style="color: white; margin: 0 1em;">LinkedIn</a>
+ </div>
+</footer>
+
+
+
+<!-- Task 4  -->
+
+<section style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f8f9fa; padding: 2em;">
+ <header style="text-align: center; margin-bottom: 2em;">
+   <h1 style="font-size: 2.5em; color: #333;">My Personal Blog</h1>
+   <input id="search" type="text" placeholder="Search blog posts..." style="padding: 0.75em; width: 60%; max-width: 400px; border: 1px solid #ccc; border-radius: 5px;">
+ </header>
+
+ <div id="categories" style="text-align: center; margin-bottom: 2em;">
+   <button onclick="filterCategory('all')" style="margin: 0 0.5em; padding: 0.5em 1em; border: none; border-radius: 20px; background: #007bff; color: white; cursor: pointer;">All</button>
+   <button onclick="filterCategory('Tech')" style="margin: 0 0.5em; padding: 0.5em 1em; border: none; border-radius: 20px; background: #6c757d; color: white; cursor: pointer;">Tech</button>
+   <button onclick="filterCategory('Travel')" style="margin: 0 0.5em; padding: 0.5em 1em; border: none; border-radius: 20px; background: #28a745; color: white; cursor: pointer;">Travel</button>
+   <button onclick="filterCategory('Food')" style="margin: 0 0.5em; padding: 0.5em 1em; border: none; border-radius: 20px; background: #ffc107; color: white; cursor: pointer;">Food</button>
+ </div>
+
+ <div id="posts" style="display: flex; flex-wrap: wrap; gap: 2em; justify-content: center;">
+   <div class="post" data-title="Tech Review" data-category="Tech" style="background: white; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); padding: 1.5em; width: 300px;">
+     <img src="tech.jpg" style="width: 100%; border-radius: 5px;">
+     <h3 style="margin-top: 1em;">Tech Review</h3>
+     <p>A quick review of the latest gadgets and trends.</p>
+     <small>Published: Aug 1, 2025</small>
+   </div>
+
+   <div class="post" data-title="Exploring Lahore" data-category="Travel" style="background: white; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); padding: 1.5em; width: 300px;">
+     <img src="lahore.jpg" style="width: 100%; border-radius: 5px;">
+     <h3 style="margin-top: 1em;">Exploring Lahore</h3>
+     <p>My recent adventures in the heart of Pakistan.</p>
+     <small>Published: July 24, 2025</small>
+   </div>
+
+   <div class="post" data-title="Delicious Street Food" data-category="Food" style="background: white; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); padding: 1.5em; width: 300px;">
+     <img src="streetfood.jpg" style="width: 100%; border-radius: 5px;">
+     <h3 style="margin-top: 1em;">Delicious Street Food</h3>
+     <p>Top 5 street foods you must try in Karachi.</p>
+     <small>Published: July 15, 2025</small>
+   </div>
+ </div>
+</section>
+
+<script>
+ const posts = document.querySelectorAll('.post');
+ document.getElementById('search').addEventListener('input', function () {
+   const keyword = this.value.toLowerCase();
+   posts.forEach(post => {
+     const title = post.dataset.title.toLowerCase();
+     post.style.display = title.includes(keyword) ? 'block' : 'none';
+   });
+ });
+
+ function filterCategory(category) {
+   posts.forEach(post => {
+     post.style.display = (category === 'all' || post.dataset.category === category) ? 'block' : 'none';
+   });
+ }
+</script>
+
+
+
+
+
+<section id="landing" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #ffffff; color: #333; padding: 2em; transition: background 0.3s, color 0.3s;">
+ <header style="text-align: center; margin-bottom: 3em;">
+   <h1 style="font-size: 3em;">TechNova</h1>
+   <p style="font-size: 1.2em;">The future of tech starts here.</p>
+   <button onclick="toggleTheme()" style="margin-top: 1em; padding: 0.6em 1.5em; background: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">Toggle Theme</button>
+ </header>
+
+ <section style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2em; margin-bottom: 3em;">
+   <div class="feature-card" style="flex: 1; min-width: 250px; background: #f1f1f1; padding: 1.5em; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); transition: background 0.3s, color 0.3s;">
+     <h3>Fast Setup</h3>
+     <p>Deploy your tech product in minutes with our simplified setup tools.</p>
+   </div>
+   <div class="feature-card" style="flex: 1; min-width: 250px; background: #f1f1f1; padding: 1.5em; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); transition: background 0.3s, color 0.3s;">
+     <h3> Secure</h3>
+     <p>Built with security best practices to keep your data safe.</p>
+   </div>
+   <div class="feature-card" style="flex: 1; min-width: 250px; background: #f1f1f1; padding: 1.5em; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); transition: background 0.3s, color 0.3s;">
+     <h3>Scalable</h3>
+     <p>Grow with confidence — our platform supports startups to enterprises.</p>
+   </div>
+ </section>
+
+ <section style="text-align: center; margin-bottom: 3em;">
+   <h2 style="margin-bottom: 1em;">Testimonials</h2>
+   <blockquote style="font-style: italic; max-width: 600px; margin: auto;">"TechNova gave our startup the boost we needed to launch and scale fast. Highly recommended!"</blockquote>
+   <p>- Rumail Raza, CEO of InnovateX</p>
+ </section>
+
+ <section style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2em;">
+   <div class="pricing-card" style="background: #e9ecef; padding: 2em; border-radius: 10px; width: 250px; text-align: center; transition: background 0.3s, color 0.3s;">
+     <h3>Free</h3>
+     <p>$0 / month</p>
+     <p>Basic tools and limited support.</p>
+   </div>
+   <div class="pricing-card" style="background: #e9ecef; padding: 2em; border-radius: 10px; width: 250px; text-align: center; transition: background 0.3s, color 0.3s;">
+     <h3>Pro</h3>
+     <p>$19 / month</p>
+     <p>All features, faster support, and more integrations.</p>
+   </div>
+   <div class="pricing-card" style="background: #e9ecef; padding: 2em; border-radius: 10px; width: 250px; text-align: center; transition: background 0.3s, color 0.3s;">
+     <h3>Enterprise</h3>
+     <p>Custom Pricing</p>
+     <p>Full control and dedicated success team.</p>
+   </div>
+ </section>
+
+ <footer style="margin-top: 3em; text-align: center; color: #888;">
+   <p>Contact us: hello@technova.com</p>
+   <p>Follow us: <a href="#" style="color: #007bff;">LinkedIn</a> | <a href="#" style="color: #007bff;">Twitter</a></p>
+ </footer>
+</section>
+
+<script>
+ function toggleTheme() {
+   const landing = document.getElementById('landing');
+   const cards = landing.querySelectorAll('.feature-card, .pricing-card');
+   const isDark = landing.style.backgroundColor === 'rgb(34, 34, 34)';
+   if (isDark) {
+     landing.style.backgroundColor = '#ffffff';
+     landing.style.color = '#333';
+     cards.forEach(card => {
+       card.style.backgroundColor = '#f1f1f1';
+       card.style.color = '#333';
+     });
+   } else {
+     landing.style.backgroundColor = '#222';
+     landing.style.color = '#f4f4f4';
+     cards.forEach(card => {
+       card.style.backgroundColor = '#2c2c2c';
+       card.style.color = '#f4f4f4';
+     });
+   }
+ }
+</script>
+<!--TASK NUMBER 7 -->
+
+<style>
+  .weather-card {
+    max-width: 600px;
+    margin: 2em auto;
+    padding: 2em;
+    background: linear-gradient(to right, #00c6ff, #0072ff);
+    color: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    font-family: 'Segoe UI', sans-serif;
+    text-align: center;
+  }
+  .weather-card h2 {
+    margin-bottom: 1em;
+    font-size: 2.5em;
+  }
+  .weather-card input {
+    padding: 0.8em;
+    width: 80%;
+    max-width: 400px;
+    border: none;
+    border-radius: 8px;
+    margin-bottom: 1em;
+    font-size: 1em;
+  }
+  .weather-card button {
+    padding: 0.8em 1.5em;
+    background-color: white;
+    color: #0072ff;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background 0.3s;
+  }
+  .weather-card button:hover {
+    background-color: #f0f0f0;
+  }
+  .weather-result {
+    margin-top: 1.5em;
+    font-size: 1.2em;
+  }
+</style>
+
+<section class="weather-card">
+  <h2> Live Weather in Pakistan</h2>
+  <input id="cityInput" type="text" placeholder="Enter city (e.g. Karachi)">
+  <br>
+  <button onclick="fetchWeatherPK()">Get Weather</button>
+  <div id="weatherResultPK" class="weather-result"></div>
+</section>
+
+<script>
+async function fetchWeatherPK() {
+  const city = document.getElementById('cityInput').value.trim();
+  const resultBox = document.getElementById('weatherResultPK');
+  resultBox.innerHTML = 'Fetching data...';
+
+  try {
+    const geo = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(city)}&count=1`);
+    const geoData = await geo.json();
+
+    if (!geoData.results || geoData.results.length === 0) {
+      resultBox.innerHTML = `<p style='color:yellow;'>City not found.</p>`;
+      return;
+    }
+
+    const { latitude, longitude, name, country } = geoData.results[0];
+
+    const weatherRes = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true`);
+    const weatherData = await weatherRes.json();
+
+    if (weatherData.current_weather) {
+      const cw = weatherData.current_weather;
+      resultBox.innerHTML = `
+        <h3>${name}, ${country}</h3>
+        <p><strong> ${cw.temperature}°C</strong></p>
+        <p> Wind: ${cw.windspeed} km/h, dir: ${cw.winddirection}°</p>
+        <p> Time: ${cw.time}</p>
+      `;
+    } else {
+      resultBox.innerHTML = `<p style='color:red;'>Weather data unavailable.</p>`;
+    }
+  } catch (error) {
+    console.error(error);
+    resultBox.innerHTML = `<p style='color:red;'>Error retrieving data.</p>`;
+  }
+}
+</script>
+
+
+
+
+
+
+
